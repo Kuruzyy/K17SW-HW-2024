@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Happy U Programming Competition</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="logo">Happy U</div>
+				<ul>
+					<li><a href="index.html"">Home</a></li>
+					<li><a href="register.php" target="_blank">Register</a></li>
+					<li><a href="students.php" target="_blank">Participants</a></li>
+				</ul>
+			</nav>
+		</header>
+		<!-- <?php include 'includes/header.php'; ?> -->
+		<!-- Include the header -->
+
+		<main>
+			<section class="hero fade-in">
+				<h1>Program the Future</h1>
+				<p>Join the Happy U Programming Competition on October 25, 2024</p>
+				<a href="register.php" target="_blank" class="btn">Register Now</a>
+			</section>
+
+			<section id="about" class="fade-in">
+				<h2>About the Competition</h2>
+				<p>
+					Showcase your coding skills, solve challenging problems, and compete
+					with fellow students. This competition is designed to inspire the next
+					generation of programmers.
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			<p>&copy; 2024 Happy U Programming Competition. All rights reserved.</p>
+		</footer>
+		<!-- <?php include 'includes/footer.php'; ?> -->
+		<!-- Include the footer -->
+
+		<script src="js/script.js"></script>
+		<!-- Link to your external JavaScript file -->
+	</body>
+</html>

@@ -1,0 +1,381 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure the header stays on top of other content */
+    background-color: #333; /* Or any other background color */
+    padding: 10px 0; /* Adjust padding as necessary */
+    width: 100%; /* Full width */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+section {
+    height: 100vh; /* Ensure the section takes full viewport height */
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center; /* Center the content vertically */
+    align-items: center; /* Center the content horizontally */
+    padding: 20px; /* Add some padding for breathing space */
+    box-sizing: border-box;
+    margin: 50px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4fd1c5;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4fd1c5;
+}
+
+main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+h1, h2 {
+    scroll-margin-top: 200px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #4fd1c5;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4fd1c5;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #4fd1c5;
+    color: #1e1e1e;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3fa596;
+}
+
+footer {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+/* Fade-in Effect */
+.fade-in {
+    opacity: 0;
+    transform: translateY(-40px); /* Move the element up for a smoother descent */
+    transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth transition */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0); /* Bring the element to its original position */
+}
+
+/* Form Group Styles */
+.form-group {
+    position: relative; /* Position for label floating effect */
+    margin-bottom: 1.5rem; /* Spacing between form groups */
+    max-width: 100%; /* Ensuring it doesn't exceed the parent */
+}
+
+/* Common Styles for Inputs and Selects */
+input,
+select {
+    width: calc(100% - 24px); /* Full width with padding adjustment */
+    max-width: 100%; /* Set max-width */
+    padding: 12px 10px; /* Padding for both input and select */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded borders */
+    font-size: 16px; /* Font size */
+    background-color: #1e1e1e; /* Background color to match theme */
+    color: #ffffff; /* Text color */
+    transition: border-color 0.3s; /* Transition for border color */
+}
+
+/* Input and Select focus styles */
+input:focus,
+select:focus {
+    border-color: #4fd1c5; /* Border color on focus */
+    outline: none; /* No outline on focus */
+    box-shadow: 0 1px 5px rgba(76, 175, 80, 0.5); /* Subtle shadow */
+}
+
+/* Style for the Select Dropdown */
+select {
+    appearance: none; /* Remove default styling in browsers */
+    background-image: url('data:image/png;base64,...'); /* Add a custom dropdown icon, optional */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position of the custom icon */
+    background-size: 12px; /* Size of the custom icon */
+}
+
+/* Label Styles */
+label {
+    position: absolute; /* Absolute position for floating effect */
+    left: 10px; /* Left padding */
+    top: 14px; /* Top padding */
+    transition: 0.2s ease all; /* Transition for floating effect */
+    color: #aaa; /* Label color */
+    font-size: 16px; /* Label font size */
+}
+
+/* Floating label styles */
+input:focus + label,
+input:not(:placeholder-shown) + label,
+select:focus + label {
+    top: -8px; /* Moves label up when focused or filled */
+    left: 8px; /* Adjusts left position */
+    font-size: 12px; /* Smaller font size */
+    color: #4fd1c5; /* Color for floating label */
+}
+
+/* Button Styles */
+button {
+    background-color: #4fd1c5; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 12px; /* Padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Full width */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition for background color */
+}
+
+/* Button hover styles */
+button:hover {
+    background-color: #3fa596; /* Darker green on hover */
+}
+
+/* Registration Form */
+.register-form {
+    max-width: 400px; /* Set maximum width for the registration form */
+    margin: 2rem auto; /* Center the form horizontally */
+    padding: 2rem; /* Add padding */
+    background: #2d2d2d; /* Background color to match theme */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for elevation */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #4fd1c5;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Countdown Section */
+.countdown-section {
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+}
+
+.countdown-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4fd1c5;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    border: 2px solid #4fd1c5; /* Border color and thickness */
+    padding: 20px; /* Space inside the border */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.countdown-item {
+    background-color: #1e1e1e;
+    padding: 1rem 2rem; /* Inner padding for items */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-item span {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #4fd1c5;
+}
+
+.countdown-item p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+/* Table of Contents Styles */
+.toc {
+    position: fixed; /* Fixes it in place */
+    right: 20px; /* Distance from the right edge */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust to truly center it */
+    background-color: rgba(45, 45, 45, 0.9); /* Slightly transparent background */
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure it’s above other content */
+}
+
+/* Table of Contents Styles */
+.toc {
+    position: fixed; /* Fixes it in place */
+    right: 20px; /* Distance from the right edge */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust to truly center it */
+    background-color: rgba(45, 45, 45, 0.9); /* Slightly transparent background */
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure it’s above other content */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    pointer-events: none; /* Ignore mouse events when hidden */
+}
+
+.toc.visible {
+    opacity: 1; /* Show when visible */
+    pointer-events: auto; /* Allow mouse events when visible */
+}
+
+.toc h3 {
+    font-size: 1.5rem; /* Title size */
+    margin-bottom: 0.5rem;
+    color: #4fd1c5; /* Title color */
+}
+
+.toc ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove default padding */
+}
+
+.toc li {
+    margin: 0.5rem 0; /* Spacing between items */
+}
+
+.toc a {
+    color: #4fd1c5; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.toc a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Hover Area */
+.toc-hover-area {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    height: 100px; /* Height of hover area */
+    width: 30px; /* Width of hover area */
+    transform: translateY(-50%);
+    cursor: pointer; /* Change cursor to indicate interaction */
+}
