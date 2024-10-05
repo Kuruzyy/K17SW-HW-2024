@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost'; // or the IP address of your database server
-$dbname = 'happy_u_competition'; // The database you created
+$dbname = 'database'; // The database you created
 $username = 'your_username'; // e.g., 'root'
 $password = 'your_password'; // e.g., '' or 'root'
 

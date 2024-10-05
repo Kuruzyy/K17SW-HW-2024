@@ -1,3 +1,4 @@
+// Fade in Effect
 document.addEventListener("DOMContentLoaded", function () {
 	console.log("Happy U Programming Competition - Site Loaded");
 
