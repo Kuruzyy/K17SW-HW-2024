@@ -6,7 +6,7 @@ This project is a website for the "Program the Future" programming competition h
 
 ## Project Structure
 
-### 1. **Home Page** (`index.html`)
+### 1. **Home Page** (`index.php`)
 
 - The main landing page providing an overview of the competition.
 - Links to the registration form and other content pages.
@@ -53,7 +53,7 @@ This project is a website for the "Program the Future" programming competition h
 ├── /screenshots
 │   └── screenshot1.png          # Screenshots for submission
 │
-├── index.html                   # Home page
+├── index.php                    # Home page
 ├── register.php                 # Registration page
 ├── students.php                 # Page displaying registered students
 ├── wireframe.pdf                # Wireframe for the website design
