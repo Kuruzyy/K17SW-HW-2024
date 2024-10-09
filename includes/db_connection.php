@@ -1,12 +1,13 @@
 <?php
-$host = 'localhost'; // or the IP address of your database server
-$dbname = 'database'; // The database you created
-$username = 'your_username'; // e.g., 'root'
-$password = 'your_password'; // e.g., '' or 'root'
-
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Correct the path to point to the 'database' directory
+    $pdo = new PDO('sqlite:' . __DIR__ . '/../database/database.db');
+    // Set error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // If successful, output this message
+    echo "Connected to database successfully.";
 } catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
+    // Catch any errors and display the exception message
+    echo "Error while connecting to the database: " . $e->getMessage();
 }

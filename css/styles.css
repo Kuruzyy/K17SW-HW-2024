@@ -388,26 +388,47 @@ button:hover {
 
 /* Table Styles */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
+    width: 100%; /* Use full width */
+    border-collapse: collapse; /* Remove gaps between borders */
+    margin: 2rem 0; /* Spacing around the table */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for elevation */
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensure rounded corners are visible */
 }
 
 th, td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: left;
+    padding: 12px 15px; /* Padding for cells */
+    border: 1px solid #ddd; /* Border color for cells */
+    text-align: left; /* Left-align text */
+    font-size: 1.1rem; /* Increase font size for better readability */
+    color: #ffffff; /* Set text color to white for better visibility */
 }
 
 th {
-    background-color: #4fd1c5;
-    color: white;
+    background-color: #4fd1c5; /* Header background color */
+    color: #1e1e1e; /* Darker text color for header */
+    font-weight: bold; /* Bold font for headers */
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #2d2d2d; /* Dark background for even rows */
 }
 
-tr:hover {
-    background-color: #ddd;
+tr:nth-child(odd) {
+    background-color: #1e1e1e; /* Slightly lighter background for odd rows */
+}
+
+/* Optional: Adding a footer for the table */
+tfoot {
+    background-color: #4fd1c5; /* Footer background color */
+    color: #1e1e1e; /* Darker footer text color */
+    font-weight: bold; /* Bold font for footer */
+}
+
+tfoot td {
+    padding: 10px 15px; /* Padding for footer cells */
+}
+.error-message {
+    color: red;
+    font-weight: bold;
 }

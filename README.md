@@ -36,6 +36,7 @@ This project is a website for the "Program the Future" programming competition h
 │   └── styles.css               # Global styles for the website
 │
 ├── /database
+│   ├── database.sql             # Contains navigation bar (included on all pages)
 │   └── database.db              # Database of registered student
 │
 ├── /includes

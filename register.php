@@ -2,33 +2,35 @@
 // Include the database connection
 include 'includes/db_connection.php';
 
-// Initialize variables
+// Initialize variables for form inputs
 $name = $email = $language = '';
 $success = '';
 $error = '';
 
 // Check if the form is submitted
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get and sanitize input data
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $language = htmlspecialchars($_POST['language']);
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['language'])) {
+    // Assign POST variables
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $language = $_POST['language'];
 
-    // Prepare the SQL insert statement
-    $sql = "INSERT INTO students (name, email, programming_language) VALUES (:name, :email, :language)";
-    $stmt = $pdo->prepare($sql);
-
-    // Bind the form data
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':language', $language);
-
-    // Execute and check if successful
     try {
+        // Using the database connection to insert data
+        $sql = "INSERT INTO students (name, email, programming_language) VALUES (:name, :email, :language)";
+        $stmt = $pdo->prepare($sql); // Prepare the SQL statement
+
+        // Bind the parameters
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':language', $language);
+
+        // Execute the query
         $stmt->execute();
-        $success = "Registration successful!";
+
+        // Optional: Clear form inputs after successful submission
+        $name = $email = $language = '';
     } catch (PDOException $e) {
-        $error = "Failed to register: " . $e->getMessage();
+        $error = "Failed to register: " . $e->getMessage(); // Capture the error message
     }
 }
 ?>
@@ -44,37 +46,35 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Include Header -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Registration Form -->
+    <!-- Registration Form Section -->
     <main class="register-form fade-in">
         <h2>Register for the Competition</h2>
 
         <!-- Display success or error message -->
-        <?php if ($success): ?>
-            <p class="success-message"><?php echo $success; ?></p>
-        <?php elseif ($error): ?>
+        <?php if ($error): ?>
             <p class="error-message"><?php echo $error; ?></p>
         <?php endif; ?>
 
-        <form action="" method="POST">
+        <form action="register.php" method="POST">
             <div class="form-group">
-                <input type="text" name="name" required placeholder=" " id="name" />
+                <input type="text" name="name" required placeholder=" " id="name" value="<?php echo htmlspecialchars($name); ?>" />
                 <label for="name">Name</label>
             </div>
 
             <div class="form-group">
-                <input type="email" name="email" required placeholder=" " id="email" />
+                <input type="email" name="email" required placeholder=" " id="email" value="<?php echo htmlspecialchars($email); ?>" />
                 <label for="email">Email</label>
             </div>
 
             <div class="form-group">
                 <select name="language" id="language" required>
-                    <option value="" disabled selected>Select your programming language</option>
-                    <option value="python">Python</option>
-                    <option value="java">Java</option>
-                    <option value="c++">C++</option>
+                    <option value="" disabled <?php echo empty($language) ? 'selected' : ''; ?>>Select your programming language</option>
+                    <option value="python" <?php echo $language === 'python' ? 'selected' : ''; ?>>Python</option>
+                    <option value="java" <?php echo $language === 'java' ? 'selected' : ''; ?>>Java</option>
+                    <option value="c++" <?php echo $language === 'c++' ? 'selected' : ''; ?>>C++</option>
                 </select>
             </div>
 
@@ -82,7 +82,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         </form>
     </main>
 
-    <!-- Footer -->
+    <!-- Include Footer -->
     <?php include 'includes/footer.php'; ?>
 
     <script src="js/script.js"></script> <!-- Link to your external JavaScript file -->

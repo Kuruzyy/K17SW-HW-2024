@@ -1,13 +1,20 @@
 <?php
 // Include the database connection and header
 include 'includes/db_connection.php';
-include 'includes/header.php';
+
+// Initialize an empty array for students
+$students = [];
 
 // Fetch students from the database
-$sql = "SELECT name, email, programming_language, registration_date FROM students ORDER BY registration_date DESC";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+    $sql = "SELECT name, email, programming_language, registration_date FROM students ORDER BY registration_date DESC";
+    $stmt = $pdo->prepare($sql); // Use $pdo from the included db_connection.php
+    $stmt->execute();
+    $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Handle database connection error
+    echo "Error fetching students: " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +30,8 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <!-- Header -->
     <?php include 'includes/header.php'; ?>
-    <main>
+
+    <main class="fade-in">
         <h2>Registered Participants</h2>
 
         <?php if (count($students) > 0): ?>
@@ -52,7 +60,8 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
     </main>
 
-    <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
+    <!-- Include Footer -->
+    <?php include 'includes/footer.php'; ?>
 
     <script src="js/script.js"></script> <!-- Link to your external JavaScript file -->
 </body>

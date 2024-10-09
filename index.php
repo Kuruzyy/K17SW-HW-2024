@@ -14,7 +14,7 @@
      <!-- Header -->
      <?php include 'includes/header.php'; ?>
 
-     <div class="toc-hover-area"></div> <!-- Hover area for TOC -->
+     <div class="toc-hover-area"></div>
      <div id="toc" class="toc">
          <p>Table of Contents</p>
          <ul></ul> <!-- TOC will be populated here -->
@@ -117,9 +117,9 @@
      </main>
 
      <!-- Footer -->
-     <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
+     <?php include 'includes/footer.php'; ?>
 
-     <script src="js/script.js"></script> <!-- Link to your external JavaScript file -->
+     <script src="js/script.js"></script>
  </body>
 
  </html>
