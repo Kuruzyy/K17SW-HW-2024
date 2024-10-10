@@ -1,5 +1,7 @@
 # Happy U Programming Competition Website
 
+![Image description](/screenshots/home-0.png)
+
 ## Overview
 
 This project is a website for the "Program the Future" programming competition hosted by Happy U. The website allows students to register for the competition and view a list of registered participants. The website includes several pages with consistent styling and navigation.
