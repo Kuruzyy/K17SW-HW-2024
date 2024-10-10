@@ -10,27 +10,32 @@ $error = '';
 // Check if the form is submitted
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['language'])) {
     // Assign POST variables
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $language = $_POST['language'];
+    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $language = isset($_POST['language']) ? trim($_POST['language']) : '';
 
-    try {
-        // Using the database connection to insert data
-        $sql = "INSERT INTO students (name, email, programming_language) VALUES (:name, :email, :language)";
-        $stmt = $pdo->prepare($sql); // Prepare the SQL statement
+    // Validate inputs
+    if (empty($name) || empty($email) || empty($language)) {
+        $error = "All fields are required.";
+    } else {
+        try {
+            // Using the database connection to insert data
+            $sql = "INSERT INTO students (name, email, programming_language) VALUES (:name, :email, :language)";
+            $stmt = $pdo->prepare($sql);
 
-        // Bind the parameters
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':language', $language);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':language', $language);
 
-        // Execute the query
-        $stmt->execute();
-
-        // Optional: Clear form inputs after successful submission
-        $name = $email = $language = '';
-    } catch (PDOException $e) {
-        $error = "Failed to register: " . $e->getMessage(); // Capture the error message
+            if ($stmt->execute()) {
+                $success = "Registration successful!";
+                $name = $email = $language = ''; // Clear form fields after successful submission
+            } else {
+                $error = "Failed to register. Please try again.";
+            }
+        } catch (PDOException $e) {
+            $error = "Failed to register: " . $e->getMessage();
+        }
     }
 }
 ?>
@@ -78,7 +83,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['language'])
                 </select>
             </div>
 
-            <button type="submit" class="btn">Register</button>
+            <input type="submit" class="btn">
         </form>
     </main>
 
